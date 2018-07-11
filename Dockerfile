@@ -2,7 +2,7 @@ FROM php:7.2-apache
 # Copy files from local machine
 COPY . /var/www/html
 # Install php extensions
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install mysqli pdo pdo_mysql zlib-dev
 # Remote apache config
 RUN rm /etc/apache2/sites-available/000-default.conf
 COPY 000-default.conf /etc/apache2/sites-available/
@@ -10,3 +10,5 @@ COPY 000-default.conf /etc/apache2/sites-available/
 RUN mkdir var
 RUN chown -R www-data:www-data var/
 RUN service apache2 restart
+RUN apt-get update
+RUN apt-get install git-core
