@@ -11,4 +11,4 @@ RUN mkdir var
 RUN chown -R www-data:www-data var/
 RUN service apache2 restart
 RUN apt-get update
-RUN apt-get install git
+RUN apt-get install git-core -y
