@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - 8000:80
+    volumes:
+      - ./assets:/var/www/html/assets
+      - ./bin:/var/www/html/bin
+      - ./config:/var/www/html/config
+      - ./public:/var/www/html/public
+      - ./src:/var/www/html/src
+      - ./templates:/var/www/html/templates
+      - ./.env:/var/www/html/.env
+      - ./composer.json:/var/www/html/composer.json
+  adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8001:8080
+  db:
+    image: mysql:5.6
+    restart: always
+    env_file:
+      - .env

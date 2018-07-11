@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - 80:80
+  adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8001:8080
+  db:
+    image: mysql:5.6
+    restart: always
+    env_file:
+      - .env
