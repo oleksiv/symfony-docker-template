@@ -7,5 +7,6 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN rm /etc/apache2/sites-available/000-default.conf
 COPY 000-default.conf /etc/apache2/sites-available/
 # Change folder owner
+RUN mkdir var
 RUN chown -R www-data:www-data var/
 RUN service apache2 restart
